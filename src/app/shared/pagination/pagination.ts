@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 @Component({
     selector: 'app-pagination',
@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     templateUrl: './pagination.html',
     styleUrl: './pagination.css',
 })
-export class Pagination implements OnInit {
+export class Pagination implements OnChanges {
 
     @Input() currentPage = 1;
     @Input() totalPages = 1;
@@ -15,8 +15,10 @@ export class Pagination implements OnInit {
 
     public pages: number[] = [1];
 
-    public ngOnInit(): void {
-        this.pages = this.calculatePages();
+    public ngOnChanges(changes: SimpleChanges): void {
+        if (changes['currentPage'] || changes['totalPages']) {
+            this.pages = this.calculatePages();
+        }
     }
 
     public calculatePages(): number[] {
