@@ -50,6 +50,10 @@ nav {
     letter-spacing: 0.02em;
 }
 
+.logo a {
+    text-decoration: none;
+}
+
 .nav-links a {
     margin-left: 1.2rem;
     color: var(--muted);

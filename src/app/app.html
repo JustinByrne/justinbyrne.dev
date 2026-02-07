@@ -1,37 +1,15 @@
 <header>
-        <nav>
-            <div class="logo">dev journal</div>
-            <div class="nav-links">
-                <a href="#">Home</a>
-                <a href="#">Posts</a>
-                <a href="#">About</a>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <router-outlet />
+    <nav>
+        <div class="logo">
+            <a href="/">Justin Byrne</a>
+        </div>
 
-        <section class="intro">
-            <h1>Dev Journal</h1>
-            <p>Notes, fixes, and things Future Me will forget.</p>
-        </section>
+        <div class="nav-links">
+            <a href="/posts">Posts</a>
+        </div>
+    </nav>
+</header>
 
-        <section class="posts">
-            <h2>Recent Posts</h2>
-            <ul class="post-list">
-                <li>
-                    <a href="/how-to-center-a-div-3-methods">How to center a div - 3 methods</a>
-                    <span class="date">Feb 2, 2026</span>
-                </li>
-                <li>
-                    <a href="/how-to-display-the-time-between-two-dates-in-laravel">How to display the time between two dates in Laravel</a>
-                    <span class="date">Jan 28, 2026</span>
-                </li>
-                <li>
-                    <a href="/how-to-install-docker-desktop-on-ubuntu">How to install Docker Desktop on Ubuntu</a>
-                    <span class="date">Jan 10, 2026</span>
-                </li>
-            </ul>
-        </section>
-    </main> 
-
+<main>
+    <router-outlet />
+</main> 
