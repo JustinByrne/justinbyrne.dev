@@ -1,6 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { Component, computed, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { Title } from '@angular/platform-browser';
+import { RouterLink } from '@angular/router';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import postsData from '../../../assets/posts.json';
 import { Post } from '../../shared/markdown/post.types';
@@ -11,6 +13,7 @@ import { Pagination } from '../../shared/pagination/pagination';
     imports: [
         DatePipe,
         Pagination,
+        RouterLink,
     ],
     templateUrl: './posts.html',
     styleUrl: './posts.css',
@@ -27,7 +30,11 @@ export class Posts implements OnInit {
 
     private debouncedSearchTerm: Signal<string> = computed(() => '');
 
-    constructor() {
+    constructor(
+        protected title: Title,
+    ) {
+        this.title.setTitle('Posts | JustinByrne.dev');
+
         this.debouncedSearchTerm = toSignal(
             toObservable(this.searchTerm).pipe(
                 debounceTime(300),
@@ -42,6 +49,8 @@ export class Posts implements OnInit {
     }
 
     public ngOnInit(): void {
+
+
         this.allPosts.set(postsData);
 
         this.filteredPosts = computed(() => {

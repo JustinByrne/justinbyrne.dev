@@ -52,7 +52,7 @@ export class BlogPost implements OnInit, AfterViewInit {
                 if (post.meta.title) {
                     this.postTitle.set(post.meta.title);
 
-                    this.title.setTitle(post.meta.title ?? '');
+                    this.title.setTitle(post.meta.title + ' | JustinByrne.dev');
 
                     this.meta.updateTag({
                         property: 'og:title',
