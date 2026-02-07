@@ -3,11 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { MarkdownComponent } from 'ngx-markdown';
 import { BlogPostService } from '../shared/services/blog-post-service';
 import { Meta, Title } from '@angular/platform-browser';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-blog-post',
     imports: [
         MarkdownComponent,
+        DatePipe,
     ],
     templateUrl: './blog-post.html',
     styleUrl: './blog-post.css',
