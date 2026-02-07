@@ -1,10 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { AfterViewInit, Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { MarkdownComponent } from 'ngx-markdown';
-import { BlogPostService } from '../shared/services/blog-post-service';
-import { Meta, Title } from '@angular/platform-browser';
-import { DatePipe } from '@angular/common';
-import Prism from '../prism';
+import Prism from '../../prism';
+import { BlogPostService } from '../../shared/services/blog-post-service';
 
 @Component({
     selector: 'app-blog-post',
