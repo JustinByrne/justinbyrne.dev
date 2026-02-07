@@ -1,5 +1,7 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import postsData from '../../../assets/posts.json';
 import { Post } from '../../shared/markdown/post.types';
 import { Pagination } from '../../shared/pagination/pagination';
@@ -15,28 +17,62 @@ import { Pagination } from '../../shared/pagination/pagination';
 })
 export class Posts implements OnInit {
 
-    public posts: Post[] = [];
-    public currentPage: number = 1;
-    public postsPerPage: number = 15;
-    public totalPages: number = 1;
+    public allPosts: WritableSignal<Post[]> = signal([]);
+    public searchTerm: WritableSignal<string> = signal('');
+    public currentPage: WritableSignal<number> = signal(1);
+    public postsPerPage: number = 4;
+    public posts: Signal<Post[]> = computed(() => []);
+    public filteredPosts: Signal<Post[]> = computed(() => []);
+    public totalPages: Signal<number> = computed(() => 1);
+
+    private debouncedSearchTerm: Signal<string> = computed(() => '');
 
     constructor() {
-        //
+        this.debouncedSearchTerm = toSignal(
+            toObservable(this.searchTerm).pipe(
+                debounceTime(300),
+                distinctUntilChanged()
+            ),
+            { initialValue: '' }
+        );
+
+        toObservable(this.debouncedSearchTerm).subscribe(() => {
+            this.currentPage.set(1);
+        });
     }
 
     public ngOnInit(): void {
-        this.totalPages = Math.ceil(postsData.length / this.postsPerPage);
-        this.setPage(this.currentPage);
-    }
+        this.allPosts.set(postsData);
 
-    private getPosts(): void {
-        const start = (this.currentPage - 1) * this.postsPerPage;
-        const end = start + this.postsPerPage;
-        this.posts = postsData.slice(start, end);
+        this.filteredPosts = computed(() => {
+            const search = this.debouncedSearchTerm().toLowerCase();
+
+            if (!search) {
+                return this.allPosts();
+            }
+
+            return this.allPosts()
+                .filter(post =>
+                    post.meta.title?.toLowerCase().includes(search)
+                    || post.meta.description?.toLowerCase().includes(search)
+                    || post.content.toLowerCase().includes(search)
+                );
+        });
+
+        this.posts = computed(() => {
+            const start = (this.currentPage() - 1) * this.postsPerPage;
+            const end = start + this.postsPerPage;
+
+            return this.filteredPosts().slice(start, end);
+        });
+
+        this.totalPages = computed(() =>
+            Math.max(1, Math.ceil(this.filteredPosts().length / this.postsPerPage))
+        );
     }
 
     public setPage(page: number): void {
-        this.currentPage = page;
-        this.getPosts();
+        if (page < 1 || page > this.totalPages()) return;
+        this.currentPage.set(page);
     }
 }

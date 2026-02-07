@@ -2,9 +2,24 @@
     <h1>Posts</h1>
 </section>
 
+<section class="search-container">
+    <input
+        type="search"
+        [value]="searchTerm()"
+        (input)="searchTerm.set($any($event.target).value); currentPage.set(1)"
+        placeholder="Search posts..."
+    >
+
+    <p class="result-count">
+        @if (searchTerm().length) {
+            Found {{ filteredPosts().length }} posts
+        }
+    </p>
+</section>
+
 <section class="posts">
     <ul class="post-list">
-        @for (post of posts; track post.meta.slug) {
+        @for (post of posts(); track post.meta.slug) {
             <li>
                 <a href="/{{ post.meta.slug }}">
                     {{ post.meta.title }}
@@ -19,6 +34,6 @@
 
 <app-pagination
     (pageChange)="setPage($event)"
-    [currentPage]="currentPage"
-    [totalPages]="totalPages"
+    [currentPage]="currentPage()"
+    [totalPages]="totalPages()"
 />
