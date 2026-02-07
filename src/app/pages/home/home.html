@@ -1,0 +1,20 @@
+<section class="intro">
+    <h1>Dev Journal</h1>
+    <p>Notes, fixes, and things Future Me will forget.</p>
+</section>
+
+<section class="posts">
+    <h2>Recent Posts</h2>
+    <ul class="post-list">
+        @for (post of posts; track post.meta.slug) {
+            <li>
+                <a href="/{{ post.meta.slug }}">
+                    {{ post.meta.title }}
+                </a>
+                <span class="date">
+                    {{ post.meta.date | date:'longDate' }}
+                </span>
+            </li>
+        }
+    </ul>
+</section>
