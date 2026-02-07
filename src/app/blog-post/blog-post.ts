@@ -29,16 +29,18 @@ export class BlogPost implements OnInit {
     public ngOnInit(): void {
         const slug = this.route.snapshot.paramMap.get('slug');
 
-        if (!slug) {
-            return;
+        if (slug) {
+            this.loadContent(slug);
         }
+    }
 
-        this.isLoading = true;
+    private loadContent(slug: string): void {
+        this.isLoading.set(true);
 
         this.blogPostService
             .getPost(slug)
             .subscribe(post => {
-                this.content = post.content;
+                this.content.set(post.content);
 
                 if (post.meta.title) {
                     this.title.setTitle(post.meta.title ?? '');
@@ -73,7 +75,7 @@ export class BlogPost implements OnInit {
                     content: 'summary_large_image'
                 });
 
-                this.isLoading = false;
-            })
+                this.isLoading.set(false);
+            });
     }
 }
