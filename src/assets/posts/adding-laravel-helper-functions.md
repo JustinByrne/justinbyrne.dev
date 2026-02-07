@@ -3,7 +3,7 @@ title: Adding Laravel Helper Functions
 slug: adding-laravel-helper-functions
 author: Justin Byrne
 type: post
-date: '2024-07-13T16:00:00.000Z'
+date: 2024-07-13T16:00:00.000Z
 ---
 
 There are times within a Laravel project that you'll need to use a function over and over, but it is not related to any one particular model or controller so doesn't make sense to create a service for the one function. That's where creating a Laravel helper function comes into play.
