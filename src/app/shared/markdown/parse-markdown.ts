@@ -12,7 +12,7 @@ export function parseMarkdown(md: string): Post {
     }
 
     const yaml = match[1];
-    const content = md.slice(match[0].length);
+    const content = md.slice(match[0].length).replace('\n', '');
     const meta: PostMeta = {};
 
     yaml.split('\n').forEach(line => {
