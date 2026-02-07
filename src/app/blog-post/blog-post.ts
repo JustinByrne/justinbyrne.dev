@@ -53,6 +53,10 @@ export class BlogPost implements OnInit {
                     });
                 }
 
+                if (post.meta.author) {
+                    this.postAuthor.set(post.meta.author);
+                }
+
                 if (post.meta.description) {
                     this.meta.updateTag({
                         name: 'description',
