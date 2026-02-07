@@ -1,9 +1,10 @@
-import { Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { AfterViewInit, Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MarkdownComponent } from 'ngx-markdown';
 import { BlogPostService } from '../shared/services/blog-post-service';
 import { Meta, Title } from '@angular/platform-browser';
 import { DatePipe } from '@angular/common';
+import Prism from '../prism';
 
 @Component({
     selector: 'app-blog-post',
@@ -14,7 +15,7 @@ import { DatePipe } from '@angular/common';
     templateUrl: './blog-post.html',
     styleUrl: './blog-post.css',
 })
-export class BlogPost implements OnInit {
+export class BlogPost implements OnInit, AfterViewInit {
 
     public postTitle: WritableSignal<string | undefined> = signal(undefined);
     public postAuthor: WritableSignal<string | undefined> = signal(undefined);
@@ -36,6 +37,10 @@ export class BlogPost implements OnInit {
         if (slug) {
             this.loadContent(slug);
         }
+    }
+
+    public ngAfterViewInit(): void {
+        Prism.highlightAll();
     }
 
     private loadContent(slug: string): void {
