@@ -6,8 +6,6 @@ type: post
 date: '2024-08-14T16:00:00.000Z'
 ---
 
-# How to display the time between two dates in Laravel
-
 Within a Laravel project, or even a PHP project there can be times when the calculation between two date and times is needed. Luckily the Carbon PHP API has some methods for doing exactly that.
 
 Here's the scenario I'll be using to demonstrate; you have a clocking system and you want to see how long an individual has been clocked into the system. For this scenario I have a `Clocking` model set up as followed:

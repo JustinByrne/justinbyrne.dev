@@ -6,8 +6,6 @@ type: post
 date: '2023-07-09T16:00:00.000Z'
 ---
 
-# How to setup Laravel Valet Linux+
-
 Building laravel sites should be easy and using valet linux+ does just that. But, getting it installed and working may need some finessing.
 
 Using Linux to develop a Laravel application is really fun, it allows for you to get as close to the production environment as possible. However, sometimes configuring the OS to have everything you need can be a bit daunting. To overcome this issue I use [Valet Linux+](https://valetlinux.plus/).

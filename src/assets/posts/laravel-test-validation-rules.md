@@ -6,8 +6,6 @@ type: post
 date: '2023-02-08T16:00:00.000Z'
 ---
 
-# Laravel test validation rules
-
 Building large scaled Laravel apps will require testing. Whether this is done as TDD (Test Driven Development) or after the code is written, it's always a good idea to test validation rules. To do this there are two different ways, the first is to write a test for each validation rule, the other, which I will demonstrate, is to use PHPUnit Dataproviders.
 
 ## Create a Test

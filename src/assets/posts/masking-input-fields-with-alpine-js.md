@@ -6,8 +6,6 @@ type: post
 date: '2023-02-08T16:00:00.000Z'
 ---
 
-# Masking input fields with Alpine.js
-
 There are times when creating a form where a field needs its content in a certain state. This can be something as simple as a date field where the field needs to look like `DD/MM/YYYY`.
 
 By default HTML doesn't have the ability to make these custom masks for the inputted content. However, if the site is using [Alpine.js](https://alpinejs.dev) then the [Mask plugin](https://alpinejs.dev/plugins/mask) can be used to achieve this.

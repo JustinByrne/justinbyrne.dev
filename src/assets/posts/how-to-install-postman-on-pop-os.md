@@ -6,8 +6,6 @@ type: post
 date: '2023-03-11T16:00:00.000Z'
 ---
 
-# How to install Postman on Pop OS
-
 Pop OS by default doesn't support snap. So, using the normal route of installing Postman with snap is not so simple. However, it can be as simple as downloading the tarball and adding a file.
 
 Pop OS by default doesn't support snap. So, using the normal route of installing Postman with snap is not so simple. However, it can be as simple as downloading the tarball and adding a file.
