@@ -20,7 +20,7 @@ export class Posts implements OnInit {
     public allPosts: WritableSignal<Post[]> = signal([]);
     public searchTerm: WritableSignal<string> = signal('');
     public currentPage: WritableSignal<number> = signal(1);
-    public postsPerPage: number = 4;
+    public postsPerPage: number = 15;
     public posts: Signal<Post[]> = computed(() => []);
     public filteredPosts: Signal<Post[]> = computed(() => []);
     public totalPages: Signal<number> = computed(() => 1);
