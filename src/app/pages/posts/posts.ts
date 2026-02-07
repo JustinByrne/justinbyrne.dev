@@ -2,11 +2,13 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import postsData from '../../../assets/posts.json';
 import { Post } from '../../shared/markdown/post.types';
+import { Pagination } from '../../shared/pagination/pagination';
 
 @Component({
     selector: 'app-posts',
     imports: [
         DatePipe,
+        Pagination,
     ],
     templateUrl: './posts.html',
     styleUrl: './posts.css',
