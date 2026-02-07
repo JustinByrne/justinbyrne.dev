@@ -17,7 +17,7 @@ export class BlogPostService {
 
     public getPost(slug: string): Observable<Post> {
         return this.http
-            .get(`assets/posts/${slug}.md`, { responseType: 'text' })
+            .get(`./assets/posts/${slug}.md`, { responseType: 'text' })
             .pipe(map(md => parseMarkdown(md)));
     }
 }
