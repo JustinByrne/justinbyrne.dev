@@ -18,6 +18,7 @@
 </section>
 
 <app-pagination
+    (pageChange)="setPage($event)"
     [currentPage]="currentPage"
     [totalPages]="totalPages"
 />

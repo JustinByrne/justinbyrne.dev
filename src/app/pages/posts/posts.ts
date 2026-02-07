@@ -25,12 +25,18 @@ export class Posts implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.getPosts();
+        this.totalPages = Math.ceil(postsData.length / this.postsPerPage);
+        this.setPage(this.currentPage);
     }
 
     private getPosts(): void {
-        this.posts = postsData;
+        const start = (this.currentPage - 1) * this.postsPerPage;
+        const end = start + this.postsPerPage;
+        this.posts = postsData.slice(start, end);
+    }
 
-        this.totalPages = Math.ceil(this.posts.length / this.postsPerPage);
+    public setPage(page: number): void {
+        this.currentPage = page;
+        this.getPosts();
     }
 }
