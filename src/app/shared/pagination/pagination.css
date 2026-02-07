@@ -1,0 +1,36 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.pagination button {
+  background: var(--surface);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.75rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+
+.pagination button:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.pagination button.active {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--bg);
+  font-weight: 600;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
