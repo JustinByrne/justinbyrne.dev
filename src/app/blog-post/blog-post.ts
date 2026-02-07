@@ -14,8 +14,10 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class BlogPost implements OnInit {
 
-    public content: WritableSignal<string> = signal('');
-    public isLoading: WritableSignal<boolean> = signal(false);
+    public postTitle: WritableSignal<string | undefined> = signal(undefined);
+    public postAuthor: WritableSignal<string | undefined> = signal(undefined);
+    public postDate: WritableSignal<string | undefined> = signal(undefined);
+    public postContent: WritableSignal<string | undefined> = signal(undefined);
 
     constructor(
         protected blogPostService: BlogPostService,
