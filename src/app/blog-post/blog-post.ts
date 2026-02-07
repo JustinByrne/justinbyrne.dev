@@ -65,7 +65,7 @@ export class BlogPost implements OnInit, AfterViewInit {
                 }
 
                 if (post.meta.date) {
-                    this.postDate.set(post.meta.date.replaceAll("'", ''));
+                    this.postDate.set(post.meta.date);
                 }
 
                 if (post.meta.description) {
