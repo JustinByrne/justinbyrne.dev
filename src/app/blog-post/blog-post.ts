@@ -37,8 +37,6 @@ export class BlogPost implements OnInit {
     }
 
     private loadContent(slug: string): void {
-        this.isLoading.set(true);
-
         this.blogPostService
             .getPost(slug)
             .subscribe(post => {
@@ -76,8 +74,6 @@ export class BlogPost implements OnInit {
                     name: 'twitter:card',
                     content: 'summary_large_image'
                 });
-
-                this.isLoading.set(false);
             });
     }
 }
