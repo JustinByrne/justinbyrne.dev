@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Post } from '../markdown/post.types';
 import { parseMarkdown } from '../markdown/parse-markdown';
+import { Post } from '../markdown/post.types';
 
 @Injectable({
     providedIn: 'root',
