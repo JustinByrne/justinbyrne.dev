@@ -40,7 +40,7 @@ export class BlogPost implements OnInit {
         this.blogPostService
             .getPost(slug)
             .subscribe(post => {
-                this.content.set(post.content);
+                this.postContent.set(post.content);
 
                 if (post.meta.title) {
                     this.title.setTitle(post.meta.title ?? '');
