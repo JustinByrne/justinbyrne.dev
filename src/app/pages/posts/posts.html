@@ -1,0 +1,18 @@
+<section class="intro">
+    <h1>Posts</h1>
+</section>
+
+<section class="posts">
+    <ul class="post-list">
+        @for (post of posts; track post.meta.slug) {
+            <li>
+                <a href="/{{ post.meta.slug }}">
+                    {{ post.meta.title }}
+                </a>
+                <span class="date">
+                    {{ post.meta.date | date:'longDate' }}
+                </span>
+            </li>
+        }
+    </ul>
+</section>
