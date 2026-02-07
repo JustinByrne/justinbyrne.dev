@@ -1,19 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-
-interface PostMeta {
-    title?: string;
-    author?: string;
-    description?: string;
-    date?: string;
-    image?: string;
-}
-
-export interface Post {
-    meta: PostMeta;
-    content: string;
-}
+import { Post, PostMeta } from '../markdown/post.types';
 
 @Injectable({
     providedIn: 'root',
