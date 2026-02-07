@@ -57,6 +57,10 @@ export class BlogPost implements OnInit {
                     this.postAuthor.set(post.meta.author);
                 }
 
+                if (post.meta.date) {
+                    this.postDate.set(post.meta.date.replaceAll("'", ''));
+                }
+
                 if (post.meta.description) {
                     this.meta.updateTag({
                         name: 'description',
