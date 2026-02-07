@@ -43,6 +43,8 @@ export class BlogPost implements OnInit {
                 this.postContent.set(post.content);
 
                 if (post.meta.title) {
+                    this.postTitle.set(post.meta.title);
+
                     this.title.setTitle(post.meta.title ?? '');
 
                     this.meta.updateTag({
