@@ -140,3 +140,33 @@ code {
 article p {
     margin-bottom: 1.4rem;
 }
+
+/* Prism overrides */
+pre[class*="language-"] {
+  background: var(--code-bg) !important;
+  border-radius: 6px !important;
+  font-size: 0.85rem !important;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6b7280 !important;
+}
+
+.token.keyword {
+  color: #7aa2f7 !important;
+}
+
+.token.string {
+  color: #9ece6a !important;
+}
+
+.token.function {
+  color: #bb9af7 !important;
+}
+
+.token.number {
+  color: #f7768e !important;
+}
