@@ -1,5 +1,19 @@
-<article>
-    @if (!isLoading()) {
-        <markdown [data]="content()"></markdown>
-    }
-</article>
+@if (postContent()) {
+    <div class="intro">
+        @if (postTitle()) {
+            <h1 [innerText]="postTitle()"></h1>
+        }
+
+        @if (postAuthor()) {
+            <p>Author: {{ postAuthor() }}</p>
+        }
+
+        @if (postDate()) {
+            <p>Date: {{ postDate() | date:'longDate' }}</p>
+        }
+    </div>
+
+    <article>
+        <markdown [data]="postContent()"></markdown>
+    </article>
+}
