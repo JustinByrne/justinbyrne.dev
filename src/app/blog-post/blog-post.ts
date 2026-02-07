@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MarkdownComponent } from 'ngx-markdown';
 import { BlogPostService } from '../shared/services/blog-post-service';
@@ -14,8 +14,8 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class BlogPost implements OnInit {
 
-    public content: string = '';
-    public isLoading: boolean = false;
+    public content: WritableSignal<string> = signal('');
+    public isLoading: WritableSignal<boolean> = signal(false);
 
     constructor(
         protected blogPostService: BlogPostService,
