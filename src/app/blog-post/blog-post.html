@@ -1,9 +1,3 @@
-@if (isLoading) {
-    <div>Loading</div>
+@if (!isLoading()) {
+    <markdown [data]="content()"></markdown>
 }
-
-@if (content) {
-    <markdown>{{ content }}</markdown>
-}
-
-<!-- {{ content }} -->
