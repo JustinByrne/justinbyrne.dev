@@ -27,14 +27,7 @@ jobs:
         run: npm run build -- --configuration production --base-href "/" --output-path dist/site
 
       - name: Add 404.html for SPA routing
-        run: |
-          echo '<!DOCTYPE html>
-          <html>
-            <head>
-              <meta http-equiv="refresh" content="0; URL=./index.html">
-            </head>
-            <body></body>
-          </html>' > dist/site/browser/404.html
+        run: cp dist/site/browser/index.html dist/site/browser/404.html
 
       - name: Add .nojekyll
         run: touch dist/site/browser/.nojekyll
