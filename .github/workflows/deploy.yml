@@ -36,6 +36,9 @@ jobs:
             <body></body>
           </html>' > dist/site/browser/404.html
 
+      - name: Add .nojekyll
+        run: touch dist/site/browser/.nojekyll
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
