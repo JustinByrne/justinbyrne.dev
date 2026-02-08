@@ -141,6 +141,17 @@ code {
     font-size: 0.85rem;
 }
 
+:not(pre) > code {
+  background: var(--surface);
+  color: var(--accent);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.95em;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
 article p {
     margin-bottom: 1.4rem;
 }
