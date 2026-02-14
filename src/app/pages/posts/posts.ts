@@ -65,6 +65,7 @@ export class Posts implements OnInit {
                     post.meta.title?.toLowerCase().includes(search)
                     || post.meta.description?.toLowerCase().includes(search)
                     || post.content.toLowerCase().includes(search)
+                    || post.meta.tags?.toLowerCase().includes(search)
                 );
         });
 
