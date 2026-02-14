@@ -11,6 +11,10 @@
         @if (postDate()) {
             <p>Date: {{ postDate() | date:'longDate' }}</p>
         }
+
+        @if (postTags()) {
+            <p>Tags: {{ postTags() }}</p>
+        }
     </div>
 
     <article>

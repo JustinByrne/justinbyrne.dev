@@ -5,6 +5,7 @@ export interface PostMeta {
     date?: string;
     image?: string;
     slug?: string;
+    tags?: string;
 }
 
 export interface Post {

@@ -21,6 +21,7 @@ export class BlogPost implements OnInit, AfterViewInit {
     public postAuthor: WritableSignal<string | undefined> = signal(undefined);
     public postDate: WritableSignal<string | undefined> = signal(undefined);
     public postContent: WritableSignal<string | undefined> = signal(undefined);
+    public postTags: WritableSignal<string | undefined> = signal(undefined);
 
     constructor(
         protected blogPostService: BlogPostService,
@@ -66,6 +67,10 @@ export class BlogPost implements OnInit, AfterViewInit {
 
                 if (post.meta.date) {
                     this.postDate.set(post.meta.date);
+                }
+
+                if (post.meta.tags) {
+                    this.postTags.set(post.meta.tags);
                 }
 
                 if (post.meta.description) {
