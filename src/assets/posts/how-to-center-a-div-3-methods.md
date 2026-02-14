@@ -4,6 +4,7 @@ slug: how-to-center-a-div-3-methods
 author: Justin Byrne
 type: post
 date: 2023-02-08T16:00:00.000Z
+tags: html, css, tailwindcss
 ---
 
 It seems that there are a lot of searches for how to center a div, and there are lots of articles and questions asking the same. Sometimes though these can be a bit hit or miss. However, here are three different methods that I can think of to do this. These different methods include: flexbox, grid and absolute positioning.

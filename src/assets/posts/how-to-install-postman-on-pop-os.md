@@ -4,6 +4,7 @@ slug: how-to-install-postman-on-pop-os
 author: Justin Byrne
 type: post
 date: 2023-03-11T16:00:00.000Z
+tags: linux, ubuntu, api, postman
 ---
 
 Pop OS by default doesn't support snap. So, using the normal route of installing Postman with snap is not so simple. However, it can be as simple as downloading the tarball and adding a file.

@@ -4,6 +4,7 @@ slug: how-to-setup-laravel-valet-linux-plus
 author: Justin Byrne
 type: post
 date: 2023-07-09T16:00:00.000Z
+tags: linux, ubuntu, laravel, php, composer
 ---
 
 Building laravel sites should be easy and using valet linux+ does just that. But, getting it installed and working may need some finessing.
