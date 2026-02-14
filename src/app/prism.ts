@@ -12,6 +12,7 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-yaml';
 
 // extras
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
