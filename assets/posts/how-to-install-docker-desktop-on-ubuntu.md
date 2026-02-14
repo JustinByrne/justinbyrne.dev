@@ -4,6 +4,7 @@ slug: how-to-install-docker-desktop-on-ubuntu
 author: Justin Byrne
 type: post
 date: 2023-12-02T16:00:00.000Z
+tags: linux, ubuntu, docker
 ---
 
 Using Docker can be brilliant especially when you are doing development work, which if you haven't noticed from my other posts that's what I tend to do. However, I came across issues when setting up my new install and thought that it would be worth sharing my experience.
