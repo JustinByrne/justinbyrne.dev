@@ -3,7 +3,7 @@ title: Building an Angular SPA on GitHub Pages
 slug: building-an-angular-spa-on-github-pages
 author: Justin Byrne
 type: post
-date: 2026-02-00T00:00:00.000Z
+date: 2026-02-14T23:07:00.000Z
 tags: angular, github, github actions, github pages
 ---
 
