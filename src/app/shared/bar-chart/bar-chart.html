@@ -21,15 +21,18 @@
         </div>
 
         <div class="chart-legend">
-            @for (s of series; track s.name) {
-                <span class="legend-item">
-                    <span class="legend-swatch">
-                        <span class="legend-swatch-half" [style.background]="dayColor(s.color)"></span>
-                        <span class="legend-swatch-half" [style.background]="nightColor(s.color)"></span>
+            <div class="chart-legends">
+                @for (s of series; track s.name) {
+                    <span class="legend-item">
+                        <span class="legend-swatch">
+                            <span class="legend-swatch-half" [style.background]="dayColor(s.color)"></span>
+                            <span class="legend-swatch-half" [style.background]="nightColor(s.color)"></span>
+                        </span>
+                        {{ s.name }}
                     </span>
-                    {{ s.name }}
-                </span>
-            }
+                }
+            </div>
+            
             @if (legendNote != '') {
                 <span class="legend-note">
                     {{ legendNote }}
