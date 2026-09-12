@@ -1,14 +1,61 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
-export interface ChartSeries {
-    name: string;
-    color: string;
-    dayValues: number[];
-    nightValues: number[];
+export interface ChartSegment {
+    name?: string;
+    values: number[];
+    color?: string;
 }
 
-const DAY_TINT = 0.35;
-const NIGHT_SHADE = -0.3;
+export interface ChartSeries {
+    name: string;
+    color?: string;
+    values?: number[];
+    segments?: ChartSegment[];
+}
+
+interface ResolvedSegment {
+    name: string;
+    values: number[];
+    color: string;
+}
+
+interface ResolvedSeries {
+    name: string;
+    segments: ResolvedSegment[];
+}
+
+interface RenderSegment {
+    color: string;
+    value: number;
+}
+
+interface RenderBar {
+    title: string;
+    height: number;
+    segments: RenderSegment[];
+}
+
+interface RenderGroup {
+    label: string;
+    bars: RenderBar[];
+}
+
+interface RenderLegend {
+    name: string;
+    colors: string[];
+}
+
+const DEFAULT_COLORS = [
+    '#7aa2f7',
+    '#9ece6a',
+    '#bb9af7',
+    '#f7768e',
+    '#e0af68',
+    '#e5e7eb',
+];
+
+const SEGMENT_TINT = 0.35;
+const SEGMENT_SHADE = -0.3;
 
 @Component({
     selector: 'app-bar-chart',
