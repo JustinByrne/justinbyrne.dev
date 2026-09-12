@@ -1,0 +1,41 @@
+<div class="chart">
+    @if (groups.length) {
+        <div class="chart-plot">
+            @for (group of groups; track $index) {
+                <div class="chart-group">
+                    <div class="chart-bars">
+                        @for (bar of group.bars; track $index) {
+                            <div class="chart-bar" [style.height.%]="bar.height" [title]="bar.title">
+                                @for (segment of bar.segments; track $index) {
+                                    <div class="chart-bar-segment" [style.flex]="segment.value" [style.background]="segment.color"></div>
+                                }
+                            </div>
+                        }
+                    </div>
+                    <span class="chart-label">{{ group.label }}</span>
+                </div>
+            }
+        </div>
+
+        <div class="chart-legend">
+            <div class="chart-legends">
+                @for (legend of legends; track legend.name) {
+                    <span class="legend-item">
+                        <span class="legend-swatch">
+                            @for (color of legend.colors; track $index) {
+                                <span class="legend-swatch-part" [style.background]="color"></span>
+                            }
+                        </span>
+                        {{ legend.name }}
+                    </span>
+                }
+            </div>
+
+            @if (legendNote != '') {
+                <span class="legend-note">
+                    {{ legendNote }}
+                </span>
+            }
+        </div>
+    }
+</div>

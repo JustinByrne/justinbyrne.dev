@@ -1,0 +1,272 @@
+.intro {
+    margin-bottom: 2rem;
+}
+
+.intro p {
+    color: var(--muted);
+    max-width: 560px;
+}
+
+.upload {
+    margin-bottom: 2.5rem;
+}
+
+.upload-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.upload-control:hover {
+    border-color: var(--accent);
+}
+
+.upload-control input[type="file"] {
+    display: none;
+}
+
+.file-name {
+    margin-left: 0.75rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.notice {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+}
+
+.error {
+    color: #f7768e;
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+}
+
+.charts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.chart-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.chart-card h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.savings {
+    margin-bottom: 2.5rem;
+}
+
+.savings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.savings-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.positive {
+    color: #9ece6a;
+}
+
+.negative {
+    color: #f7768e;
+}
+
+.neutral {
+    color: var(--muted);
+}
+
+.tariffs {
+    margin-bottom: 2.5rem;
+}
+
+.tariffs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.tariffs-header h2 {
+    margin: 0;
+}
+
+.add-tariff-button {
+    padding: 0.55rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.add-tariff-button:hover {
+    border-color: var(--accent);
+}
+
+.empty-state {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 100;
+}
+
+.modal {
+    width: 100%;
+    max-width: 420px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+}
+
+.modal-close:hover {
+    color: var(--text);
+}
+
+.tariff-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.tariff-form input {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.tariff-form input::placeholder {
+    color: var(--muted);
+}
+
+.tariff-form input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(122, 162, 247, 0.2);
+}
+
+.tariff-form button {
+    padding: 0.65rem 1.2rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.tariff-form button:hover {
+    border-color: var(--accent);
+}
+
+.tariff-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tariff-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.tariff-name {
+    font-weight: 600;
+}
+
+.tariff-meta {
+    display: block;
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+.remove {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 5px;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.remove:hover {
+    color: #f7768e;
+    border-color: #f7768e;
+}
