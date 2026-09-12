@@ -57,6 +57,7 @@
                 [labels]="dayLabels()"
                 [series]="consumptionSeries()"
                 [formatValue]="formatKwh"
+                legendNote="Light = day (05:30 - 23:30) · Dark = night"
             />
         </div>
 
@@ -66,6 +67,7 @@
                 [labels]="dayLabels()"
                 [series]="costSeries()"
                 [formatValue]="formatCurrency"
+                legendNote="Light = day (05:30 - 23:30) · Dark = night"
             />
         </div>
     </section>
