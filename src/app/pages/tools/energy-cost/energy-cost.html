@@ -1,0 +1,134 @@
+<section class="intro">
+    <h1>Energy Cost Tool</h1>
+    <p>Upload a CSV of energy readings to see daily consumption and cost, then add tariffs to compare against what you actually paid.</p>
+</section>
+
+<section class="upload">
+    <label class="upload-control">
+        <input type="file" accept=".csv" (change)="onFileSelected($event)">
+        Upload CSV
+    </label>
+
+    @if (fileName()) {
+        <span class="file-name">{{ fileName() }}</span>
+    }
+
+    @if (skippedRows()) {
+        <p class="notice">{{ skippedRows() }} row(s) skipped (missing or invalid data).</p>
+    }
+
+    @if (parseError()) {
+        <p class="error">{{ parseError() }}</p>
+    }
+</section>
+
+<section class="tariffs">
+    <div class="tariffs-header">
+        <h2>Compare Tariffs</h2>
+        <button type="button" class="add-tariff-button" (click)="openAddTariffModal()">+ Add Tariff</button>
+    </div>
+
+    @if (tariffs().length) {
+        <ul class="tariff-list">
+            @for (tariff of tariffs(); track tariff.id) {
+                <li>
+                    <div>
+                        <span class="tariff-name">{{ tariff.name }}</span>
+                        <span class="tariff-meta">
+                            {{ formatRate(tariff.dayRatePence) }}/kWh day
+                            · {{ formatRate(tariff.nightRatePence) }}/kWh night
+                            · {{ formatRate(tariff.standingChargePenceDaily) }}/day standing
+                        </span>
+                    </div>
+                    <button type="button" class="remove" (click)="removeTariff(tariff.id)">Remove</button>
+                </li>
+            }
+        </ul>
+    } @else {
+        <p class="empty-state">No tariffs added yet.</p>
+    }
+</section>
+
+@if (days().length) {
+    <section class="charts">
+        <div class="chart-card">
+            <h2>Daily Consumption</h2>
+            <app-bar-chart
+                [labels]="dayLabels()"
+                [series]="consumptionSeries()"
+                [formatValue]="formatKwh"
+            />
+        </div>
+
+        <div class="chart-card">
+            <h2>Daily Cost</h2>
+            <app-bar-chart
+                [labels]="dayLabels()"
+                [series]="costSeries()"
+                [formatValue]="formatCurrency"
+            />
+        </div>
+    </section>
+
+    @if (savings().length) {
+        <section class="savings">
+            <h2>Savings vs Actual</h2>
+            <ul class="savings-list">
+                @for (item of savings(); track item.tariff.id) {
+                    <li>
+                        <span class="tariff-name">{{ item.tariff.name }}</span>
+                        @if (item.differencePence > 0) {
+                            <span class="positive">{{ formatCurrency(item.differencePence) }} saved</span>
+                        } @else if (item.differencePence < 0) {
+                            <span class="negative">{{ formatCurrency(-item.differencePence) }} more expensive</span>
+                        } @else {
+                            <span class="neutral">No difference</span>
+                        }
+                    </li>
+                }
+            </ul>
+        </section>
+    }
+}
+
+@if (isAddTariffModalOpen()) {
+    <div class="modal-backdrop" (click)="closeAddTariffModal()">
+        <div class="modal" (click)="$event.stopPropagation()">
+            <div class="modal-header">
+                <h2>Add Tariff</h2>
+                <button type="button" class="modal-close" (click)="closeAddTariffModal()" aria-label="Close">×</button>
+            </div>
+
+            <form class="tariff-form" (submit)="$event.preventDefault(); addTariff()">
+                <input
+                    type="text"
+                    placeholder="Tariff name"
+                    [value]="draftName()"
+                    (input)="draftName.set($any($event.target).value)"
+                >
+                <input
+                    type="number"
+                    step="0.01"
+                    placeholder="Day rate (p/kWh)"
+                    [value]="draftDayRate()"
+                    (input)="draftDayRate.set($any($event.target).value)"
+                >
+                <input
+                    type="number"
+                    step="0.01"
+                    placeholder="Night rate (p/kWh)"
+                    [value]="draftNightRate()"
+                    (input)="draftNightRate.set($any($event.target).value)"
+                >
+                <input
+                    type="number"
+                    step="0.01"
+                    placeholder="Standing charge (p/day)"
+                    [value]="draftStandingCharge()"
+                    (input)="draftStandingCharge.set($any($event.target).value)"
+                >
+                <button type="submit">Add tariff</button>
+            </form>
+        </div>
+    </div>
+}
