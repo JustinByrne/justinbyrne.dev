@@ -1,0 +1,36 @@
+<div class="chart">
+    @if (series.length) {
+        <div class="chart-plot">
+            @for (label of labels; track $index; let dayIndex = $index) {
+                <div class="chart-group">
+                    <div class="chart-bars">
+                        @for (s of series; track s.name) {
+                            <div
+                                class="chart-bar"
+                                [style.height.%]="barHeight(s.dayValues[dayIndex], s.nightValues[dayIndex])"
+                                [title]="s.name + ' — day: ' + formatValue(s.dayValues[dayIndex]) + ', night: ' + formatValue(s.nightValues[dayIndex])"
+                            >
+                                <div class="chart-bar-segment" [style.flex]="s.dayValues[dayIndex]" [style.background]="dayColor(s.color)"></div>
+                                <div class="chart-bar-segment" [style.flex]="s.nightValues[dayIndex]" [style.background]="nightColor(s.color)"></div>
+                            </div>
+                        }
+                    </div>
+                    <span class="chart-label">{{ label }}</span>
+                </div>
+            }
+        </div>
+
+        <div class="chart-legend">
+            @for (s of series; track s.name) {
+                <span class="legend-item">
+                    <span class="legend-swatch">
+                        <span class="legend-swatch-half" [style.background]="dayColor(s.color)"></span>
+                        <span class="legend-swatch-half" [style.background]="nightColor(s.color)"></span>
+                    </span>
+                    {{ s.name }}
+                </span>
+            }
+            <span class="legend-note">Light = day (05:30–23:30) · Dark = night</span>
+        </div>
+    }
+</div>
