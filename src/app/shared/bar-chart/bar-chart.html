@@ -30,7 +30,11 @@
                     {{ s.name }}
                 </span>
             }
-            <span class="legend-note">Light = day (05:30–23:30) · Dark = night</span>
+            @if (legendNote != '') {
+                <span class="legend-note">
+                    {{ legendNote }}
+                </span>
+            }
         </div>
     }
 </div>

@@ -21,6 +21,7 @@ export class BarChart implements OnChanges {
     @Input() labels: string[] = [];
     @Input() series: ChartSeries[] = [];
     @Input() formatValue: (value: number) => string = value => `${value}`;
+    @Input() legendNote: string = '';
 
     public maxValue = 1;
 
