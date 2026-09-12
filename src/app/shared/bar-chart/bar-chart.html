@@ -1,38 +1,36 @@
 <div class="chart">
-    @if (series.length) {
+    @if (groups.length) {
         <div class="chart-plot">
-            @for (label of labels; track $index; let dayIndex = $index) {
+            @for (group of groups; track $index) {
                 <div class="chart-group">
                     <div class="chart-bars">
-                        @for (s of series; track s.name) {
-                            <div
-                                class="chart-bar"
-                                [style.height.%]="barHeight(s.dayValues[dayIndex], s.nightValues[dayIndex])"
-                                [title]="s.name + ' — day: ' + formatValue(s.dayValues[dayIndex]) + ', night: ' + formatValue(s.nightValues[dayIndex])"
-                            >
-                                <div class="chart-bar-segment" [style.flex]="s.dayValues[dayIndex]" [style.background]="dayColor(s.color)"></div>
-                                <div class="chart-bar-segment" [style.flex]="s.nightValues[dayIndex]" [style.background]="nightColor(s.color)"></div>
+                        @for (bar of group.bars; track $index) {
+                            <div class="chart-bar" [style.height.%]="bar.height" [title]="bar.title">
+                                @for (segment of bar.segments; track $index) {
+                                    <div class="chart-bar-segment" [style.flex]="segment.value" [style.background]="segment.color"></div>
+                                }
                             </div>
                         }
                     </div>
-                    <span class="chart-label">{{ label }}</span>
+                    <span class="chart-label">{{ group.label }}</span>
                 </div>
             }
         </div>
 
         <div class="chart-legend">
             <div class="chart-legends">
-                @for (s of series; track s.name) {
+                @for (legend of legends; track legend.name) {
                     <span class="legend-item">
                         <span class="legend-swatch">
-                            <span class="legend-swatch-half" [style.background]="dayColor(s.color)"></span>
-                            <span class="legend-swatch-half" [style.background]="nightColor(s.color)"></span>
+                            @for (color of legend.colors; track $index) {
+                                <span class="legend-swatch-part" [style.background]="color"></span>
+                            }
                         </span>
-                        {{ s.name }}
+                        {{ legend.name }}
                     </span>
                 }
             </div>
-            
+
             @if (legendNote != '') {
                 <span class="legend-note">
                     {{ legendNote }}
