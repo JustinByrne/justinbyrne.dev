@@ -55,8 +55,10 @@ export class EnergyCost {
             return [{
                 name: 'Consumption',
                 color: ACTUAL_COLOR,
-                dayValues: this.days().map(day => byDay.get(day)?.consumptionDayKwh ?? 0),
-                nightValues: this.days().map(day => byDay.get(day)?.consumptionNightKwh ?? 0),
+                segments: [
+                    { name: 'Day', values: this.days().map(day => byDay.get(day)?.consumptionDayKwh ?? 0) },
+                    { name: 'Night', values: this.days().map(day => byDay.get(day)?.consumptionNightKwh ?? 0) },
+                ],
             }];
         });
 
@@ -68,8 +70,10 @@ export class EnergyCost {
             const actual: ChartSeries = {
                 name: 'Actual',
                 color: ACTUAL_COLOR,
-                dayValues: days.map(day => byDay.get(day)?.actualCostDayPence ?? 0),
-                nightValues: days.map(day => byDay.get(day)?.actualCostNightPence ?? 0),
+                segments: [
+                    { name: 'Day', values: days.map(day => byDay.get(day)?.actualCostDayPence ?? 0) },
+                    { name: 'Night', values: days.map(day => byDay.get(day)?.actualCostNightPence ?? 0) },
+                ],
             };
 
             const tariffSeries: ChartSeries[] = this.tariffs().map((tariff, index) => {
@@ -78,8 +82,10 @@ export class EnergyCost {
                 return {
                     name: tariff.name,
                     color: TARIFF_COLORS[index % TARIFF_COLORS.length],
-                    dayValues: days.map(day => costByDay.get(day)?.dayPence ?? 0),
-                    nightValues: days.map(day => costByDay.get(day)?.nightPence ?? 0),
+                    segments: [
+                        { name: 'Day', values: days.map(day => costByDay.get(day)?.dayPence ?? 0) },
+                        { name: 'Night', values: days.map(day => costByDay.get(day)?.nightPence ?? 0) },
+                    ],
                 };
             });
 
