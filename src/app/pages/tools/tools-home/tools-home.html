@@ -1,0 +1,15 @@
+<section class="intro">
+    <h1>Tools</h1>
+    <p>Small utilities, built for one-off jobs.</p>
+</section>
+
+<section class="tools">
+    <ul class="tool-list">
+        @for (tool of tools; track tool.path) {
+            <li>
+                <a [routerLink]="[tool.path]">{{ tool.name }}</a>
+                <span class="description">{{ tool.description }}</span>
+            </li>
+        }
+    </ul>
+</section>

@@ -1,0 +1,27 @@
+.intro {
+    margin-bottom: 2rem;
+}
+
+.intro p {
+    color: var(--muted);
+    max-width: 560px;
+}
+
+.tool-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tool-list li {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.tool-list .description {
+    display: block;
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
